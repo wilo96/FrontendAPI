@@ -4,13 +4,13 @@ Este proyecto se encuentra alojado en (https://wilo96.github.io/FrontendAPI).
 
 ## Solución 
 
-Se generó una página que presenta principalmente los personajes consumidos de la API, cada Imagen es un Link de paso a un detalle de la misma, el texto de Rick & Morty es un botón que regresa a la vista principal, las pantallas son responsivas tanto para pantallas más grandes como más pequeñas, posee una paginación en el Footer que muestra las distinas páginas y personajes de la API, contiene un cuadro de Search que permite buscar al personaje deseado o que cumpla con contener la letra o palabra buscada en el cuadro de Search. 
+Se generó una página que presenta principalmente los personajes consumidos de la API, cada Imagen es un Link de paso a un detalle de la misma, el texto de Rick & Morty es un botón que regresa a la vista principal, las pantallas son responsivas, posee una paginación en el Footer que muestra los distintos personajes de la API, contiene un cuadro de Search que permite buscar al personaje deseado que cumpla con contener la letra o palabra escrita en el cuadro de Search. 
 
 ## Arquitectura
 
 Por medio de la herramienta React se realizó un proyecto usando fetch para el consumo de la api gratuita.
 
-Esta dividido todo en carpetas que generan un mejor orden para el manejo de los coimponentes, se a generado modulos de CSS para un dise;o dedicado a los objetos de interes y se tiene un documento llamado App.scss con un estilo global del proyecto en aspectos generales.
+Esta dividido todo en carpetas que generan un mejor orden para el manejo de los componentes, se a generado modulos de CSS para un diseño dedicado a los objetos de interes y se tiene un documento llamado App.scss con un estilo global del proyecto en aspectos generales.
 
 Se a generado dos rutas, la primera es la ruta general de visualizacion total y la segunda es la ruta dedicada al detalle de un personaje, cada una con su respectivo enrutamiento como se lo podrá observar en el archivo App.jsx donde se tiene en breves rasgos la estructura y entutamiento inicial del proyecto, se a utilizaso la extensión .jsx ya que en react tiene mejor adaptación.
 
@@ -42,7 +42,7 @@ En el archivo PersonajeDetalle se llamó al consumo de la API pasando el paráme
 
 Con el uso de react-paginate se establece un objeto ReactPaginate en el pie de página, se carga los items a mostrar y se pasa de parámetro el número de página para consumir el API que mostrará los personajes según sea el caso donde tras la primera carga mostrará la página 1, posterior se alterará la misma indicando los otems de cada página según corresponda, esto se aprecia en el useEffect principal, posterior se consume el api con la nueva página y se pasa de parámetros estos nuevos items a la página Grid para ser mostrado ahí.
 
-## SCSS
+### SCSS
 
 Son páginas de estilo independietes para ciertos elementos y variables.
 
