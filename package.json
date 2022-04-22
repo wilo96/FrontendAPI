@@ -2,7 +2,7 @@
   "name": "eitek-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://wilo96.github.io/frontendapi",
+  "homepage": "http://wilo96.github.io/FrontendAPI",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
