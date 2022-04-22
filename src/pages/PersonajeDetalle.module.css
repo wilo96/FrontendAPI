@@ -1,0 +1,35 @@
+.personajeDetalle{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.col{
+    max-width: 600px;
+    margin: 15px;
+}
+
+.personajeDetalleImagen{
+    border-radius: 10px;
+}
+
+.persona {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.firstItem {
+    margin-top: 0;
+  }
+
+@media (max-width: 490px) {
+    .personajeDetalle{
+        grid-template-columns: 100%;
+    }
+
+    .personajeDetalleImagen {
+        width: auto;
+        height: auto;
+
+    }
+}

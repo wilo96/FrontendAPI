@@ -1,0 +1,22 @@
+.persona {
+    list-style: none;
+    font-size: 1.2rem;
+    text-align: center;
+
+}
+
+.persona:hover{
+    opacity: 0.8;
+}
+
+.personaImagen {
+    border-radius: 10px;
+    background-color: azure;
+}
+
+@media (max-width: 400px) {
+    .personaImagen {
+        width: 90%;
+        height: auto;
+    }
+}

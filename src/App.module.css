@@ -1,0 +1,6 @@
+.titulo {
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgb(71, 249, 0), 0 0 20px rgb(71, 249, 0), 0 0 30px #92e600, 0 0 40px #92e600,
+    0 0 50px #92e600, 0 0 60px #92e600, 0 0 70px #92e600;
+}
