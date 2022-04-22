@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Enlace del proyecto en Github Pages 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto se encuentra alojado en (https://wilo96.github.io/FrontendAPI).
 
-## Available Scripts
+## Solución 
 
-In the project directory, you can run:
+Se generó una página que presenta principalmente los personajes consumidos de la API, cada Imagen es un Link de paso a un detalle de la misma, el texto de Rick & Morty es un botón que regresa a la vista principal, las pantallas son responsivas tanto para pantallas más grandes como más pequeñas, posee una paginación en el Footer que muestra las distinas páginas y personajes de la API, contiene un cuadro de Search que permite buscar al personaje deseado o que cumpla con contener la letra o palabra buscada en el cuadro de Search. 
 
-### `npm start`
+## Arquitectura
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Por medio de la herramienta React se realizó un proyecto usando fetch para el consumo de la api gratuita.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Esta dividido todo en carpetas que generan un mejor orden para el manejo de los coimponentes, se a generado modulos de CSS para un dise;o dedicado a los objetos de interes y se tiene un documento llamado App.scss con un estilo global del proyecto en aspectos generales.
 
-### `npm test`
+Se a generado dos rutas, la primera es la ruta general de visualizacion total y la segunda es la ruta dedicada al detalle de un personaje, cada una con su respectivo enrutamiento como se lo podrá observar en el archivo App.jsx donde se tiene en breves rasgos la estructura y entutamiento inicial del proyecto, se a utilizaso la extensión .jsx ya que en react tiene mejor adaptación.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+En la carpeta src se encuentra el contenido por carpetas:
 
-### `npm run build`
+### components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Contiene tres archivos principales como son Persona que contiene la estructura para mostrar la imagen y descripción en la vista global, Search que contiene el componente de búsqueda y Spinner que se presenta mientras se esta cargando las imágenes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Cada uno tiene un modulo CSS que genera en tema de imágenes una opacidad al posicionar un puntero sobre estas y con el uso de los @media se genera que las mismas sean escalables en torno al tamaño de la pantalla que se muestra haciendo responsivo a dispositivos móviles. Al componente Search se generó un estilo con un focus verde al seleccionarlo y a su vez un estilo combinado entre cuandro de texto y boton de búsqueda. Al Spinner se le dio una animación de rotación mientras se cargan las páginas.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Grid
 
-### `npm run eject`
+Contiene el consumo a la API de forma global o por medio de la búsqueda en el cuadro Search, se tiene dos métodos useEffect, en el primero se genera un cambio en la muestra cuando se realiza una búsqueda cambiando la ruta de la misma a una forma general o enviando el parámetro del personaje a buscar para mostrarlo posteriormente en la vista a detalle, en el segundo useEffect se manda a mostrar los personajes de acuerdo al cambio que se tenga en sus items al recibir el llamado de la paginación.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Este tiene un objeto styles que se llama de un modulo CSS en donde se le indica que todo el display es de formato grid y se auto rellena las columnas acorde al espacio que tenga en su pantalla, posterior usando los @media se generó una condicion indicando que si la vista es menor a una cantidad de pixeles establecidos, las proporciones de la imagen y su textop cambiarian a ocupar la pantalla completa, haciendo de esta manera responsibo a dispositivos móviles.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Aquí se utilizó un Hook que proviene de la carpeta Hooks llamado useQuery, lo que permite obtener la locación actual de la URL y obtener el parámetro enviado en este caso es ?name lo que permite consumir el API de busqueda individual.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### pages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Aquí se encuentra dos páginas tanto la principal donde esta englobado la paginación y el Grid de imágenes, como la página del detalle del personaje seleccionado.
 
-## Learn More
+En el archivo PersonajeDetalle se llamó al consumo de la API pasando el parámetro del ID con el uso del método useParam, se genera un estilo de display en flex para mostrar el contenido de Imagen junto al texto, generando un corte en el flex a manera de mostrar uno a bajo del otro en caso de que el tamaño de la pantalla sea reducido y por medio de los @media se genera una responsividad en el tamaño del texto e imagen mostrado.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Página Principal
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Paginación**
 
-### Code Splitting
+Con el uso de react-paginate se establece un objeto ReactPaginate en el pie de página, se carga los items a mostrar y se pasa de parámetro el número de página para consumir el API que mostrará los personajes según sea el caso donde tras la primera carga mostrará la página 1, posterior se alterará la misma indicando los otems de cada página según corresponda, esto se aprecia en el useEffect principal, posterior se consume el api con la nueva página y se pasa de parámetros estos nuevos items a la página Grid para ser mostrado ahí.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## SCSS
 
-### Analyzing the Bundle Size
+Son páginas de estilo independietes para ciertos elementos y variables.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Utils
 
-### Making a Progressive Web App
+Aquí se consume el API para busquedas generales o específicas, retornando un json que será mapeado en el Grid o Detalle de los personajes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Enfoque, Metodología y Mejoras
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+El enfoque está basado en una vista atractiva para el usuario, un estilo minimalista que cumpla con lo funcional pero que genere agrado en el impacto visual, se utilizó un fondo negro generando de esta manera una menor perturbación luminosa en cuando al brillo de pantalla siendo un fondo blanco en lo contrario, se optó por letras blancas dando un mejor realce y contraste al texto, se jugó con colores propios de las imágenes como son el verde para dar unos shadows tanto al texto como al objeto Search. Se utilizó una metodología Incremental ya que se puede generar actualizaciones de este proyecto y mejoras. Entre las mejoras se realizaria un cuadro de sugerencias para la búsqueda, se implementaria una busqueda más rapida a través del teclado, se mejoraria apariencia y funcionalidad de la paginación ya que al no encontrar el personaje escrito la API retornaba un String causando un error en el mapeo del json, razón por la cual se generó un seteo del mismo objeto en caso de no entontrar resultados mostrando de esta manera una busqueda infinita.
